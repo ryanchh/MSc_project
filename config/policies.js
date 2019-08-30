@@ -30,8 +30,8 @@ module.exports.policies = {
     '*':'authenticated'
   },
 
-  staff:{
-    '*':'authenticated'
-  },
+//   staff:{
+//     '*':'authenticated'
+//   },
 
 };
