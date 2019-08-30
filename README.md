@@ -22,12 +22,11 @@ Please download Jenkins from [jenkins](https://jenkins.io/download/). Choose LTS
 
 1. Log in Jenkins with your admin account. 
 
-2. Find `Jenkins location` at `Manage Jenkins/Configure System`, set your admin email address with Gmail account![image-20190830110526515 pm](/Users/ryan/Library/Application Support/typora-user-images/image-20190830110526515 pm.png)
+2. Find `Jenkins location` at `Manage Jenkins/Configure System`, set your admin email address with Gmail account
 
-3. Find `E-mail Notification` at end of `Manage Jenkins/Configure System`, set your SMTP server as `smtp.gmail.com`. Click `advanced` button, and set your Gmail account and SMTP port as `465`.![image-20190830111122798 pm](/Users/ryan/Library/Application Support/typora-user-images/image-20190830111122798 pm.png)
+3. Find `E-mail Notification` at end of `Manage Jenkins/Configure System`, set your SMTP server as `smtp.gmail.com`. Click `advanced` button, and set your Gmail account and SMTP port as `465`.
 
-4. Go to `Manage Jenkins/Configure Global Security`, make sure  `CSRF Protection` and `Crumb Algorithm` are enabled.![image-20190830111518142 pm](/Users/ryan/Library/Application Support/typora-user-images/image-20190830111518142 pm.png)
-5. In `Manage Jenkins/Manage Plugins`, install `Blue Ocean` plugin.
+4. Go to `Manage Jenkins/Configure Global Security`, make sure  `CSRF Protection` and `Crumb Algorithm` are enabled.
 
 Now Jenkins is ready to use.
 
