@@ -1,0 +1,38 @@
+<div class="col-11">
+  <nav class="navbar navbar-light justify-content-between">
+    <a class="navbar-brand">My Module</a>
+    <form class="form-inline" action="/teacher/module" method="GET">
+      <input class="form-control mr-sm-2" name="keyword" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" type="submit">Search</button>
+      <a class="btn btn-outline-primary" href="/user/enroll_module">Enroll</a>
+    </form>
+  </nav>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Module Code</th>
+        <th scope="col">Module Title</th>
+        <th scope="col">Module Year</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% modules.forEach(function(module){ %>
+      <tr>
+        <td><a href='/teacher/module_detail/<%= module.id %>'><%= module.moduleCode %></a></td>
+        <td><%= module.moduleTitle %></td>
+        <td><%= module.moduleYear %></td>
+        <td>
+          <form action="/user/module/<%= module.id %>" method="POST">
+            <!-- <input type="hidden" name="_method" value="DELETE"> -->
+            <input type="submit" class="btn btn-outline-danger" value="Drop">
+            <input type="hidden" name="_csrf" value="<%- _csrf %>">
+            <a class="btn btn-outline-primary" href="/teacher/module/<%= module.id %>/new_coursework">Post</a>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+</div>

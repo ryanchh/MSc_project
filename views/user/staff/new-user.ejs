@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-11">
+
+    <nav class="navbar navbar-light justify-content-between">
+      <a class="navbar-brand center-block">New User</a>
+    </nav>
+    <form action="/user/create" method="POST">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="emailAddress" placeholder="Email">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password">
+      </div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" name="username" placeholder="Name">
+      </div>
+      <div class="form-group">
+        <label for="authority">Authority</label>
+        <select class="form-control" name="authority">
+          <option>Staff</option>
+          <option>Teacher</option>
+          <option>Student</option>
+        </select>
+        <!-- <input type="text" class="form-control" name="authority" placeholder="auth"> -->
+        <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+      </div>
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-outline-success mx-3">Create</button>
+        <button type="button" class="btn btn-outline-danger mx-3">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

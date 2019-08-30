@@ -1,0 +1,24 @@
+<div class="col-11">
+  <div class="col text-center">
+    <!-- <nav class="navbar navbar-light justify-content-between"> -->
+    <a class="navbar-brand"><%= coursework.courseworkTitle %></a>
+    <!-- </nav> -->
+    <hr>
+  </div>
+
+  <form action="/student/coursework/<%= coursework.id %>/new_attempt" method="POST">
+    <div class="form-group row">
+      <label for="staticEmail" class="col-sm-2 col-form-label">Repository</label>
+      <div class="col-sm-10">
+        <input class="form-control-plaintext" placeholder="Repository" name="repository"></input>
+      </div>
+    </div>
+    <hr>
+    <div class="form-group text-center">
+      <button class="btn btn-outline-primary my-2 my-sm-0 mr-sm-2" type="submit">Post</button>
+      <input type="hidden" name="_csrf" value="<%= _csrf %>">
+      <a href="/student/coursework_detail/<%= coursework.id %>"
+        class="btn btn-outline-danger my-2 my-sm-0 mr-sm-2">Cancel</a>
+    </div>
+  </form>
+</div>

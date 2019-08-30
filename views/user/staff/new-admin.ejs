@@ -1,0 +1,27 @@
+<div class="container center-block">
+  <div class="col">
+    <nav class="navbar navbar-light justify-content-between">
+      <a class="navbar-brand center-block">New Admin</a>
+    </nav>
+
+    <form action="/first_admin" method="POST">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="emailAddress" placeholder="Email">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password">
+      </div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" name="username" placeholder="Name">
+        <!-- <input type="hidden" name="_csrf" value="<%= _csrf %>" /> -->
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-outline-success mx-4">Create</button>
+      </div>
+    </form>
+  </div>
+</div>

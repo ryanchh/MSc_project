@@ -1,0 +1,18 @@
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>email</th>
+            <th>name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% users.forEach(function(user){ %>
+            <tr>
+                <td><%= user.id %></td>
+                <td><%= user.emailAddress %></td>
+                <td><%= user.username %></td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>

@@ -1,0 +1,53 @@
+<div class="col">
+  <div class="col-11">
+    <nav class="navbar navbar-light justify-content-between">
+      <a class="navbar-brand"><%= module.moduleTitle %></a>
+      <form class="form-inline">
+        <a type="btn" class="btn btn-outline-success my-2 my-sm-0"
+          href="/student/coursework/<%= coursework.id %>/new_attempt">Post</a>
+      </form>
+    </nav>
+    <div id="accordion">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0 text-center">
+            <!-- <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+            aria-controls="collapseOne">
+            Instruction
+          </button> -->
+            <%= coursework.courseworkTitle %>
+          </h5>
+        </div>
+
+        <div class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+          <div class="card-body">
+            <%= coursework.coureseworkDetail %>
+            <hr>
+            Deadline:
+            <%= coursework.deadline %>
+            <hr>
+            Language: <%= coursework.programLanguage %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Attempt</th>
+          <th scope="col">Grade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% attempts.forEach(function(attempt){ %>
+        <tr>
+          <th scope="row"><a
+              href="/coursework/<%= coursework.id %>/attempt/<%= attempt.id %>"><%= attempt.repository %></a></th>
+          <td><a href="/coursework/<%= coursework.id %>/attpemt/<%= attempt.id %>"><%= attempt.grade %></a></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>

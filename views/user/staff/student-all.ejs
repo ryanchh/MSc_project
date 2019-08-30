@@ -1,0 +1,25 @@
+<div class="col-11">
+  <nav class="navbar navbar-light justify-content-between">
+    <a class="navbar-brand">Students</a>
+    <form class="form-inline" method="GET" action="/staff/student">
+      <input class="form-control mr-sm-2" type="search" name="keyword" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" type="submit">Search</button>
+    </form>
+  </nav>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Username</th>
+        <th scope="col">Email Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% students.forEach(function(student){ %>
+      <tr>
+        <td><a href='/staff/user_detail/<%= student.id %>'><%= student.username %></a></td>
+        <td><%= student.emailAddress %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>

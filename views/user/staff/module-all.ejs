@@ -1,0 +1,30 @@
+<div class="col-11">
+    <nav class="navbar navbar-light justify-content-between">
+        <a class="navbar-brand">Module</a>
+        <form class="form-inline" action="/staff/module" method="GET">
+          <input class="form-control mr-sm-2" name="keyword" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" type="submit">Search</button>
+          <a class="btn btn-outline-primary" href="/staff/new_module">New</a>
+        </form>
+      </nav>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Module Code</th>
+            <th scope="col">Module Title</th>
+            <th scope="col">Module Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% modules.forEach(function(module){ %>
+          <tr>
+            <td><%= module.moduleCode %></td>
+            <td><%= module.moduleTitle %></td>
+            <td><%= module.moduleYear %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+
+</div>
+

@@ -1,0 +1,125 @@
+
+
+
+<svg width="1500" height="500">
+    <% const startX = 120; %>
+    <% const startY = 60; %>
+    <% const offsetX = 100; %>
+    <% const offsetY = 60; %>
+    <% const offsetNodeLable = 60; %>
+    <% const offsetParaLable = 15; %>
+    <line stroke-width="3.5" x1="65.25" y1="55" x2="133.75" y2="55"></line>
+
+    <circle cx="100" cy="50" r="16" stroke="white" stroke-width="3" fill="red" /> -->
+    <% var x = startX; %>
+    <% var y = startY; %>
+    <% var count = 0; %>
+    <line x1="<%= startX %>" y1="<%= startY %>" x2="<%= startX+offsetX/2 %>" y2="<%= startY %>" style="stroke:rgb(118, 124, 126);stroke-width:4" />
+
+    <% nodes.forEach(function(node){ %>
+        <% if(count!=0){ %>
+            <line x1="<%= x-offsetX/2 %>" y1="<%= startY %>" x2="<%= x-offsetX/2 %>" y2="<%= y %>" style="stroke:rgb(118, 124, 126);stroke-width:4" />
+            <line x1="<%= x-offsetX/2 %>" y1="<%= y %>" x2="<%= x+offsetX/2 %>" y2="<%= y %>" style="stroke:rgb(118, 124, 126);stroke-width:4" />
+            <line x1="<%= x+offsetX/2 %>" y1="<%= y %>" x2="<%= x+offsetX/2 %>" y2="<%= startY %>" style="stroke:rgb(118, 124, 126);stroke-width:4" />
+            <% count = count - 1; %>
+            <% y = y + offsetY; %>
+        <% } else { %>
+            <% y = startY; %>
+            <% x = x + offsetX; %>
+            <% if(node.edges.length != 1){ %>
+                <% count = node.edges.length %>
+            <% } %>
+            <line x1="<%= x-offsetX/2 %>" y1="<%= y %>" x2="<%= x+offsetX/2 %>" y2="<%= y %>" style="stroke:rgb(118, 124, 126);stroke-width:4"/>
+        <% } %>
+    <% }) %>
+    <line x1="<%= x %>" y1="<%= startY %>" x2="<%= x+offsetX %>" y2="<%= startY %>" style="stroke:rgb(118, 124, 126);stroke-width:4" />
+
+
+    <circle cx="<%= startX %>" cy="<%= startY %>" r="8" stroke="white" stroke-width="2" fill="grey" />
+    <foreignobject x="<%= startX-offsetX/2 %>" y="<%= startY-offsetNodeLable %>" width="100" height="150" style="text-align:center">
+        Start
+    </foreignobject>
+    <% var x = startX; %>
+    <% var y = startY; %>
+    <% var count = 0; %>
+    <% nodes.forEach(function(node){ %>
+        <% if(count!=0){ %>
+            <% var lableX = x-offsetX/2; %>
+            <% var lableY = y+offsetParaLable %>
+            <% if(node.result=="SUCCESS"){ %>
+                <circle cx="<%= x %>" cy="<%= y %>" r="16" stroke="white" stroke-width="3" fill="#48eb64" />
+                    <foreignobject x="<%= lableX %>" y="<%= lableY %>" width="100" height="150" style="text-align:center">
+                        <%= node.displayName %>
+                    </foreignobject>
+            <% }else if(node.result=="FAILURE"){ %>
+                <circle cx="<%= x %>" cy="<%= y %>" r="16" stroke="white" stroke-width="3" fill="red" />
+                    <foreignobject x="<%= lableX %>" y="<%= lableY %>" width="100" height="150" style="text-align:center">
+                        <%= node.displayName %>
+                    </foreignobject>
+            <% }else if(node.result=="UNKNOWN"){ %>
+                <circle cx="<%= x %>" cy="<%= y %>" r="16" stroke="white" stroke-width="3" fill="white" />
+                    <foreignobject x="<%= x-15 %>" y="<%= y-15.5 %>" width="50" height="50">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </foreignobject>
+                    <foreignobject x="<%= lableX %>" y="<%= lableY %>" width="100" height="150" style="text-align:center">
+                        <%= node.displayName %>
+                    </foreignobject>
+            <% }else if(node.result=="NOT_BUILT"){ %>
+                <circle cx="<%= x %>" cy="<%= y %>" r="16" stroke="white" stroke-width="3" fill="grey" />
+                    <foreignobject x="<%= lableX %>" y="<%= lableY %>" width="100" height="150" style="text-align:center">
+                        <%= node.displayName %>
+                    </foreignobject>
+            <% }else if(node.result=="ABORTED"){ %>
+                <circle cx="<%= x %>" cy="<%= y %>" r="16" stroke="white" stroke-width="3" fill="#48eb64" />
+                    <foreignobject x="<%= lableX %>" y="<%= lableY %>" width="100" height="150" style="text-align:center">
+                        <%= node.displayName %>
+                    </foreignobject>
+            <% } %>
+            <% count = count - 1; %>
+            <% y = y + offsetY; %>
+        <% }else{ %>
+            <% y = startY; %>
+            <% x = x + offsetX %>
+            <% if(node.edges.length != 1){ %>
+                <% count = node.edges.length %>
+            <% } %>
+                <% var lableX = x-offsetX/2; %>
+                <% var lableY = y-offsetNodeLable %>
+                <% if(node.result=="SUCCESS"){ %>
+                    <circle cx="<%= x %>" cy="<%= y %>" r="16" stroke="white" stroke-width="3" fill="#48eb64" />
+                        <foreignobject x="<%= lableX %>" y="<%= lableY %>" width="100" height="150" style="text-align:center">
+                            <%= node.displayName %>
+                        </foreignobject>
+                <% }else if(node.result=="FAILURE"){ %>
+                    <circle cx="<%= x %>" cy="<%= y %>" r="16" stroke="white" stroke-width="3" fill="red" />
+                        <foreignobject x="<%= lableX %>" y="<%= lableY %>" width="100" height="150" style="text-align:center">
+                            <%= node.displayName %>
+                        </foreignobject>
+                <% }else if(node.result=="UNKNOWN"){ %>
+                    <circle cx="<%= x %>" cy="<%= y %>" r="16" stroke="white" stroke-width="3" fill="white" />
+                    <foreignobject x="<%= x-15 %>" y="<%= y-15.5 %>" width="50" height="50">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </foreignobject>
+                    <foreignobject x="<%= lableX %>" y="<%= lableY %>" width="100" height="150" style="text-align:center">
+                        <%= node.displayName %>
+                    </foreignobject>
+                <% }else if(node.result=="NOT_BUILT"){ %>
+                    <circle cx="<%= x %>" cy="<%= y %>" r="16" stroke="white" stroke-width="3" fill="grey" />
+                        <foreignobject x="<%= lableX %>" y="<%= lableY %>" width="100" height="150" style="text-align:center">
+                            <%= node.displayName %>
+                        </foreignobject>
+                <% } %>
+        <% } %>
+    <% }) %>
+    <circle cx="<%= x + offsetX %>" cy="<%= startY %>" r="8" stroke="white" stroke-width="2" fill="grey" />
+    <foreignobject x="<%= x+offsetX/2 %>" y="<%= startY-offsetNodeLable %>" width="100" height="150" style="text-align:center">
+        End
+    </foreignobject>
+    <foreignobject x="10" y="10" width="100" height="150">
+    </foreignobject>
+</svg>
+

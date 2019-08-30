@@ -1,0 +1,29 @@
+<div class="col-11">
+  <nav class="navbar navbar-light justify-content-between">
+    <a class="navbar-brand"><%= module.moduleTitle %></a>
+    <a class="navbar-brand"><%= teacher[0].username %></a>
+  </nav>
+
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Coursework</th>
+        <th scope="col">Deadline</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% courseworks.forEach(function(coursework){ %>
+      <tr>
+        <td><a href="/student/coursework_detail/<%= coursework.id %>"><%= coursework.courseworkTitle %></a></td>
+        <td><a><%= coursework.deadline %></a></td>
+      </tr>
+      <% }) %>
+      <!-- <tr>
+        <td><a href="/student/coursework_detail">Coursework 1</a></td>
+        <td><a href="/student/coursework">60</a></td>
+      </tr> -->
+
+    </tbody>
+  </table>
+</div>

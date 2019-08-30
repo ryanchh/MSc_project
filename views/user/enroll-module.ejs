@@ -1,0 +1,41 @@
+<div class="col-11">
+  <div class="container col-md-12 ml-md-auto">
+    <nav class="navbar navbar-light justify-content-between">
+      <a class="navbar-brand">Module</a>
+      <form class="form-inline" action="/user/module" method="GET">
+        <input class="form-control mr-sm-2" name="keyword" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" type="submit">Search</button>
+      </form>
+    </nav>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Module Code</th>
+          <th scope="col">Module Title</th>
+          <th scope="col">Module Year</th>
+          <th scope="col">Enroll</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% modules.forEach(function(module){ %>
+        <tr>
+          <td><a href='/user/module_detail/<%= module.id %>'><%= module.moduleCode %></a></td>
+          <td><%= module.moduleTitle %></td>
+          <td><%= module.moduleYear %></td>
+          <td>
+            <!-- <input class="form-check-input position-static" type="checkbox" value="opt1" name="<%= module.id %>"> -->
+            <form action="/user/enroll_module/<%= module.id %>" method="POST">
+              <!-- <input type="submit" class="btn btn-outline-primary" value="Enroll"> -->
+              <button type="submit" class="btn btn-outline-primary">Enroll</button>
+              <input type="hidden" name="_csrf" value="<%- _csrf %>" />
+            </form>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <!-- <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" type="submit">Enroll</button> -->
+    <!-- </form> -->
+  </div>
+</div>

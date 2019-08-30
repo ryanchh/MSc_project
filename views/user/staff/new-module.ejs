@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-11">
+    <nav class="navbar navbar-light justify-content-between">
+      <a class="navbar-brand center-block">New Module</a>
+    </nav>
+    <form action="/module/create" method="POST">
+      <div class="form-group">
+        <label for="moduleCode">Module Code</label>
+        <input type="text" class="form-control" name="moduleCode" placeholder="Module Code">
+      </div>
+      <div class="form-group">
+        <label for="moduleTitle">Module Title</label>
+        <input type="text" class="form-control" name="moduleTitle" placeholder="Module Title">
+      </div>
+      <div class="form-group">
+        <label for="moduleYear">Module Year</label>
+        <input type="text" class="form-control" name="moduleYear" placeholder="moduleYear">
+      </div>
+      <div class="form-group">
+        <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+      </div>
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-outline-success mx-3">Create</button>
+        <button type="button" class="btn btn-outline-danger mx-3">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

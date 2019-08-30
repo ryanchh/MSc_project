@@ -1,0 +1,51 @@
+<nav class="navbar navbar-light justify-content-between">
+  <a class="navbar-brand center-block"><%= module.moduleTitle %></a>
+</nav>
+
+<div class="col-11">
+  <form action="/teacher/module/<%= module.id %>/new_coursewrok" method="POST">
+    <div class="form-group row">
+      <label for="title" class="col-1 col-form-label">Title</label>
+      <div class="col-11">
+        <input type="text" class="form-control" id="title" placeholder="" name="title">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="language" class="col-1 col-form-label">Language</label>
+      <div class="col-11">
+        <select class="form-control" id="language" name="language">
+          <option>python</option>
+          <option>c++</option>
+          <option>java</option>
+          <option>c#</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="example-datetime-local-input" class="col-1 col-form-label">Deadline</label>
+      <div class="col-11">
+        <input class="form-control" type="datetime-local" value="" name="deadline">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="repository" class="col-1 col-form-label">Repository</label>
+      <div class="col-11">
+        <input type="text" class="form-control" id="repository" placeholder="" name="repository">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="script">Script</label>
+      <textarea class="form-control" id="script" rows="10" name="script"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="instruction">Instruction</label>
+      <textarea class="form-control" id="instruction" rows="20" name="instruction"></textarea>
+    </div>
+    <div class="form-group text-center">
+      <button type="submit" class="btn btn-outline-success">Post</button>
+      <a href="/teacher/module_detail/<%= module.id %>" class="btn btn-outline-danger">Cancel</a>
+      <input type="hidden" name="_csrf" value="<%= _csrf %>">
+    </div>
+  </form>
+</div>

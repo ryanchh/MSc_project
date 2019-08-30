@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Automated Assessment And Feedback</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!--STYLES-->
+  <link rel="stylesheet" href="/styles/bootstrap-grid.css">
+  <link rel="stylesheet" href="/styles/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="/styles/bootstrap-reboot.css">
+  <link rel="stylesheet" href="/styles/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="/styles/bootstrap.css">
+  <link rel="stylesheet" href="/styles/bootstrap.min.css">
+  <link rel="stylesheet" href="/styles/importer.css">
+  <!--STYLES END-->
+</head>
+
+<body>
+  <div id="page-wrap">
+    <header id="page-header"
+      class="navbar navbar-expand-sm navbar-dark bg-dark flex-column flex-md-row justify-content-between">
+      <a class="navbar-brand mr-0" href="/home">Automated Assesment and Feedback</a>
+
+      <div class="navbar-nav flex-row">
+        <!-- LOGGED-IN NAVIGATION -->
+        <% if(session.authenticated) { %>
+        <a class="nav-item nav-link ml-2 ml-md-0 mr-2 mr-md-0"><%= session.user.username %></a>
+        <a class="nav-item nav-link ml-2 ml-md-0 mr-2 mr-md-0" href="/session/destroy">Sign out</a>
+        <!-- Only in desktop nav -->
+        <!-- <div class="nav-item dropdown d-none d-sm-block">
+            <a class="nav-link dropdown-toggle" id="header-account-menu-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
+            <div class="dropdown-menu account-menu" aria-labelledby="header-account-menu-link">
+              <a class="dropdown-item" href="/account">Settings</a>
+              <a class="dropdown-item" href="/logout">Sign out</a>
+            </div>
+          </div> -->
+        <% } else { %>
+
+        <!-- LOGGED-OUT NAVIGATION -->
+        <a class="nav-item nav-link ml-2 ml-md-0 mr-2" href="/login">Log in</a>
+        <% } %>
+      </div>
+    </header>
+
+    <div id="main">
+      <div class="row">
+        <div class="col col-lg-2">
+          <div class="container-fluid">
+            <ul class="nav flex-column">
+              <% if(session.user.authority === 1) {%>
+              <li class="nav-item">
+                <a class="nav-link active" href="/staff/module_all">Module</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="/staff/teacher_all">Teacher</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="/staff/student_all">Student</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="/staff/new_user">New User</a>
+              </li>
+            </ul>
+            <% } else if(session.user.authority === 2) { %>
+            <li class="nav-item">
+              <a class="nav-link active" href="/teacher/my_module">Module</a>
+            </li>
+            <% } else if(session.user.authority === 3) { %>
+            <li class="nav-item">
+              <a class="nav-link active" href="/student/my_module">Module</a>
+            </li>
+            <% } %>
+          </div>
+        </div>
+        <div class="col">
+          <%- body %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/dependencies/sails.io.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    io.socket.on('connect', function(){
+      console.log('connected');
+      io.socket.get('/test', '', function(data){
+        console.log('data:',data);
+      })
+      options = {
+        auth:{
+          username: 'ryan',
+          password: '123456',
+        }
+      };
+      io.socket.get('http://localhost:8080/job/software_cw_t-12345/lastBuild/api/json', options, function(data){
+        console.log('jenkins: ',data);
+      })
+    });
+  });
+  
+  </script>
+</body>
+
+</html>

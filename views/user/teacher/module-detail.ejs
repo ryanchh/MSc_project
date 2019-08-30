@@ -1,0 +1,29 @@
+<!-- module detail for teacher -->
+
+
+<div class="col-11">
+  <nav class="navbar navbar-light justify-content-between">
+    <a class="navbar-brand"><%= module.moduleTitle %></a>
+    <a class="navbar-brand"><%= module.moduleCode %></a>
+    <a class="btn btn-outline-primary" href="/teacher/module/<%= module.id %>/new_coursework">New Coursework</a>
+  </nav>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Coursework</th>
+        <th scope="col">Deadline</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% courseworks.forEach(function(coursework){ %>
+      <tr>
+        <td><a href='/teacher/module_detail/'><%= coursework.courseworkTitle %></a></td>
+        <td><%= coursework.deadline %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  
+</div>
