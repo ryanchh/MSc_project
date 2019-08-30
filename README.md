@@ -37,9 +37,9 @@ Now Jenkins is ready to use.
 
 2. Install Sails with the following command
 
-```
-npm install sails -g
-```
+   ```
+   npm install sails -g
+   ```
 
 3. Clone the project from this repository.
 
@@ -111,7 +111,8 @@ Staff users have four element in their menu.
 
 Teacher users only have Module in the menu. In Module, teachers can enrol or unenrol module. For enrolled module, teachers can publish new coursework. The following graph shows the page for create new coursework.
 
-![image-20190831123140288 am](/Users/ryan/Library/Application Support/typora-user-images/image-20190831123140288 am.png)Please note that
+![image-20190831123140288 am](/Users/ryan/Library/Application Support/typora-user-images/image-20190831123140288 am.png)
+Please note that
 
 1. the space in coursework title will be replace by underline in Jenkins server.
 2. The repository should store the test code. 
