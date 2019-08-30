@@ -8,7 +8,7 @@ Please make sure you have installed node.js, Java[version 8-11] and MySQL.
 
 ## Install Jenkins
 
-Please download Jenkins from [https://jenkins.io/download/]. Choose LTS version and download for Mac OS X and you will get a Jenkins WAR file.
+Please download Jenkins from [jenkins](https://jenkins.io/download/). Choose LTS version and download for Mac OS X and you will get a Jenkins WAR file.
 
 1. Run the command `java -jar jenkins.war`.  
 2. Browse to `http://localhost:8080`, wait for the unlock Jenkins page.![Unlock Jenkins page](https://jenkins.io/doc/book/resources/tutorials/setup-jenkins-01-unlock-jenkins-page.jpg)
@@ -109,11 +109,8 @@ Staff users have four element in their menu.
 
 ### Teacher users
 
-Teacher users only have Module in the menu. In Module, teachers can enrol or unenrol module. For enrolled module, teachers can publish new coursework. The following graph shows the page for create new coursework.
-
-![image-20190831123140288 am](/Users/ryan/Library/Application Support/typora-user-images/image-20190831123140288 am.png)
+Teacher users only have Module in the menu. In Module, teachers can enrol or unenrol module. For enrolled module, teachers can publish new coursework.
 Please note that
-
 1. the space in coursework title will be replace by underline in Jenkins server.
 2. The repository should store the test code. 
 3. The script is for student, teachers' test code will not be influenced by the script.
